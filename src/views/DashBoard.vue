@@ -5,8 +5,7 @@
               <label for="abrir-cerrar">&#9776; <span class="abrir">Abrir</span><span class="cerrar">Cerrar</span></label>
                 <div id="sidebar" class="sidebar">
                     <div class="Hola">
-                      <li><img id="icon" src="https://cdn-icons-png.flaticon.com/512/149/149071.png"></li>
-                      <li><p id="Tury">User</p></li>
+                      <img id="icon" src="https://cdn-icons-png.flaticon.com/512/149/149071.png">                      <p id="Tury">User</p>
                     </div>
                     <ul class="menu"> 
                     <!--donde estan los simbolos de gato se pone la direcciona que se redireccionara-->
@@ -85,7 +84,7 @@ input#abrir-cerrar {
         top: 0;
         right: 0;
         z-index: 1;
-        background-color: #00324b;
+        background-color: rgb(0, 80, 53);
         overflow-x: hidden;
         transition: 0.4s;
         padding: 1rem 0;
@@ -102,13 +101,25 @@ input#abrir-cerrar {
 
     .sidebar a:hover{
         color:#fff;
-        background-color: #f90;
+        background-color: rgb(4, 63, 43);
     
     }
 
     #icon{
-    width: 70px;
-    height: 70pxS;
+    width: 100px;
+    height: 100pxS;
 }
+
+#Tury
+{
+    font-size: 1cm;
+}
+
+.Hola{
+      color:#fff;
+      margin: 0%;
+      top: 0;
+      left: 30%;
+    }
 
 </style>
