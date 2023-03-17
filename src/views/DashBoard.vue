@@ -11,12 +11,12 @@
                     <!--donde estan los simbolos de gato se pone la direcciona que se redireccionara-->
                     <li><li><RouterLink to="/">Home</RouterLink></li></li>
                     <li><RouterLink to="/About">About</RouterLink></li>
-                    <li><a href="" itemid="Destino"><i class="fa-solid fa-person"></i> Roles</a></li>
-                    <li><a href="" itemid="Destino"><i class="fa-solid fa-location-dot"></i> Destinos</a></li>
+                    <li><RouterLink to="/Listar">Listar</RouterLink></li>
+                    <li><RouterLink to="/Crear">Crear</RouterLink></li>
                     <li><a href="" itemid="Paquetes"><i class="fa-solid fa-tag"></i> Paquetes</a></li>
                      <li><a href="" itemid="Camion"><i class="fa-solid fa-truck"></i> Camionetas</a></li>
                      <li><a href="" itemid="Destino"><i class="fa-solid fa-calendar-days"></i> Salidas</a></li>
-                     <li><a href="" itemid="Destino"><i class="fa-solid fa-cart-shopping"></i> Carrito</a></li>
+                     <li><RouterLink to="/Login">Login</RouterLink></li>
                      <li><a href="" itemid="Destino"><i class="fa-solid fa-xmark"></i> Salir</a></li>
                   </ul>
                  </div>
@@ -39,10 +39,9 @@ input#abrir-cerrar {
         color:#fff;
         display:inline-block;
         position: fixed;
-        height: 100%;
-        width: 100px;
+        width: 10000px;
         top: 0;
-        right: 0;
+        left: 0;
     
     }
 
@@ -55,7 +54,7 @@ input#abrir-cerrar {
     }
     
     #contenido {
-        margin-right:0;
+        margin-left:0;
     }
     
     input#abrir-cerrar:checked ~ #sidebar {
@@ -64,7 +63,7 @@ input#abrir-cerrar {
     }
     
     input#abrir-cerrar:checked + label[for="abrir-cerrar"], input#abrir-cerrar:checked ~ #contenido {
-        margin-right:200px;
+        margin-left:200px;
         transition: margin-left .4s;
     }
     
@@ -82,7 +81,7 @@ input#abrir-cerrar {
         height: 100%;
         width: 0;
         top: 0;
-        right: 0;
+        left: 0;
         z-index: 1;
         background-color: rgb(0, 80, 53);
         overflow-x: hidden;
