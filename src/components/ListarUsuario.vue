@@ -1,4 +1,5 @@
 <template>
+      <label id="header"></label><br><br><br>
     <div>
       <div class="card">
         <div class="card-header">Articulos</div>
@@ -70,3 +71,13 @@ export default {
   },
 };
 </script>
+
+<style>
+#header{
+  text-align: center;
+  color: white;
+  width: 100%;
+  height: 55px;
+  background-color: #0f0092;
+}
+</style>

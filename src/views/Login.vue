@@ -2,6 +2,9 @@
     <div id="contenedor">
         <div id="central">
             <div id="login">
+                <div  id="logo">
+                    <img src="https://www.nyan.cat/cats/original.gif">
+                </div>
                 <div class="titulo">
                     INICIAR SESION
                 </div>
@@ -9,7 +12,7 @@
                 <div id="loginform">
                     <input type="text" id="user" placeholder="Email">
                     <input type="password" placeholder="Password" id="Password">
-                    <button><RouterLink to="/DashBoard">INICIAR SESION</RouterLink></button>
+                    <button><RouterLink to="/DashBoard">SIGN IN</RouterLink></button>
                 </div>
             </div>
         </div>
@@ -38,9 +41,9 @@
     }
     
     .titulo {
-        font-size: 200%;
+        font-size: 230%;
         font-weight: bolder;
-        color:#008f4c;
+        color:#ffffff;
         text-align: center;
         margin-bottom: 20px;
     }
@@ -48,7 +51,8 @@
     #login {
         width: 100%;
         padding: 50px 30px;
-        background-color: #2b2a2a;
+        background-color: #300ad8;
+        
         
         -webkit-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
         -moz-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
@@ -91,7 +95,7 @@
     #login button {
         font-family: 'Overpass', sans-serif;
         font-size: 160%;
-        color:#ffffff;
+        color:#f70404;
         font-weight: bolder;
         width: 100%;
         height: 40px;
@@ -101,13 +105,19 @@
         -moz-border-radius: 3px 3px 3px 3px;
         -webkit-border-radius: 3px 3px 3px 3px;
         
-        background-color: #303030;
+        background-color: rgb(0, 33, 141);
         
         margin-top: 10px;
     }
     
     #login button:hover {
-        background-color: #4d4d4d;
-        color:#bbe1fa;
+        background-color: #00b8e6;
+        color:#13a1ff;
+    }
+
+    #logo{
+        height: 80px;
+        display: flex;
+        justify-content: center;
     }
 </Style>
