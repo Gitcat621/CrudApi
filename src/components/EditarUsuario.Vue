@@ -2,9 +2,21 @@
     <label id="header"></label><br><br><br>
     <div class="container">
       <div class="card">
-        <div class="card-header">Agregar Usuario</div>
+        <div class="card-header">Editar Usuario</div>
         <div class="card-body">
-          <form v-on:submit.prevent="agregarRegistro">
+          <form v-on:submit.prevent="editarRegistro">
+            <div class="form-group">
+                <label for="">ID User:</label>
+                <input
+                type="text"
+                class="form-control"
+                name="nombre"
+                v-model="usuario.id"
+                aria-describedby="helpId"
+                id="nombre"
+                placeholder="Nombre"
+              />
+            </div>
             <div class="form-group">
               <label for="">User:</label>
               <input
@@ -105,7 +117,7 @@
     },
   
     methods: {
-      agregarRegistro() {
+        editarRegistro(id) {
         console.log(this.usuario.data);
   
         var datosEnviar = {
@@ -115,9 +127,10 @@
           IDEmpleado: this.usuario.idEmpleado,
           IDRol: this.usuario.idRol,
         };
-  
+        
+        console.log(this.id + "aaaaaaaaaa");
         axios
-          .post("https://localhost:7204/Usuario/Crear", datosEnviar)
+          .put("https://localhost:7204/Usuario/Editar/" + id, datosEnviar)
           .then((result) => {
             console.log(result);
             window.location.href = "listar";

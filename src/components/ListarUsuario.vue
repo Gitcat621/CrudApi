@@ -34,6 +34,14 @@
                     >
                       Eliminar</button
                     >|
+
+                    |<button
+                      type="button"
+                      v-on:click="EditarUsuario(usuario.id)"
+                      class="btn btn-warning"
+                    >
+                      Editar</button
+                    >
                   </div>
                 </td>
               </tr>
@@ -67,9 +75,15 @@ export default {
     borrarUsuario(id) {
       console.log(id);
 
-      axios.delete("https://localhost:7204/Usuario" + id);
+      axios.delete("https://localhost:7204/Usuario/Borrar/" + id);
 
-      window.location.href = "Listar";
+      window.location.href = "listar";
+    },
+
+    EditarUsuario(id) {
+      console.log(id);
+      this.id;
+      window.location.href = "editar";
     },
   },
 };
