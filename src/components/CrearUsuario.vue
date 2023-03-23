@@ -2,52 +2,82 @@
     <label id="header"></label><br><br><br>
     <div class="container">
       <div class="card">
-        <div class="card-header">Agregar Articulo</div>
+        <div class="card-header">Agregar Usuario</div>
         <div class="card-body">
           <form v-on:submit.prevent="agregarRegistro">
             <div class="form-group">
-              <label for="">Nombre:</label>
+              <label for="">User:</label>
               <input
                 type="text"
                 class="form-control"
                 name="nombre"
-                v-model="articulo.name"
+                v-model="usuario.user"
                 aria-describedby="helpId"
                 id="nombre"
                 placeholder="Nombre"
               />
               <small id="helpId" class="form-text" text-muted
-                >Ingresa el nombre del articulo</small
+                >Ingresa el nombre del usuario</small
               >
             </div>
             <div class="form-group">
-              <label for="">Proveedor:</label>
+              <label for="">Password:</label>
               <input
                 type="text"
                 class="form-control"
                 name="nombre"
                 id="nombre"
-                v-model="articulo.proveedor"
+                v-model="usuario.password"
                 aria-describedby="helpId"
-                placeholder="Proveedor"
+                placeholder="Password"
               />
               <small id="helpId" class="form-text" text-muted
-                >Ingresa el nombre del proveedor</small
+                >Ingresa el passwordr</small
               >
             </div>
             <div class="form-group">
-              <label for="">Precio:</label>
+              <label for="">FechaRegistro:</label>
               <input
                 type="text"
                 class="form-control"
                 name="precio"
                 id="precio"
-                v-model="articulo.precio"
+                v-model="usuario.fechaRegistro"
                 aria-describedby="helpId"
-                placeholder="Precio"
+                placeholder="00/00/00"
               />
               <small id="helpId" class="form-text" text-muted
-                >Ingresa el precio del articulo</small
+                >Ingresa la fecha de hoy</small
+              >
+            </div>
+            <div class="form-group">
+              <label for="">IDempleado:</label>
+              <input
+                type="text"
+                class="form-control"
+                name="precio"
+                id="precio"
+                v-model="usuario.idEmpleado"
+                aria-describedby="helpId"
+                placeholder="1-10"
+              />
+              <small id="helpId" class="form-text" text-muted
+                >Ingresa el id del empleado</small
+              >
+            </div>
+            <div class="form-group">
+              <label for="">IDrol:</label>
+              <input
+                type="text"
+                class="form-control"
+                name="precio"
+                id="precio"
+                v-model="usuario.idRol"
+                aria-describedby="helpId"
+                placeholder="1-10"
+              />
+              <small id="helpId" class="form-text" text-muted
+                >Ingresa el id del rol</small
               >
             </div>
   
@@ -70,22 +100,24 @@
   export default {
     data() {
       return {
-        articulo: {},
+        usuario: {},
       };
     },
   
     methods: {
       agregarRegistro() {
-        console.log(this.articulo);
+        console.log(this.usuario);
   
         var datosEnviar = {
-          name: this.articulo.name,
-          proveedor: this.articulo.proveedor,
-          precio: this.articulo.precio,
+          user: this.usuario.user,
+          password: this.usuario.password,
+          fechaRegistro: this.usuario.fechaRegistro,
+          idEmpleado: this.usuario.idEmpleado,
+          idRol: this.usuario.idRol,
         };
   
         axios
-          .post("https://localhost:7053/articulos", datosEnviar)
+          .post("https://localhost:7204/Usuario", datosEnviar)
           .then((result) => {
             console.log(result);
             window.location.href = "Listar";

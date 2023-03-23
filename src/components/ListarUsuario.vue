@@ -2,31 +2,34 @@
       <label id="header"></label><br><br><br>
     <div>
       <div class="card">
-        <div class="card-header">Articulos</div>
+        <div class="card-header">Usuario</div>
   
         <div class="card_body">
           <table class="table">
             <thead>
               <tr>
                 <th>ID</th>
-                <th>Name</th>
-                <th>Proveedor</th>
-                <th>Precio</th>
-                <th>Acciones</th>
+                <th>User</th>
+                <th>Password</th>
+                <th>FechaRegistro</th>
+                <th>IDempleado</th>
+                <th>IDrol</th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="articulo in articulos" :key="articulo.id">
-                <td>{{ articulo.id }}</td>
-                <td>{{ articulo.name }}</td>
-                <td>{{ articulo.proveedor }}</td>
-                <td>{{ articulo.precio }}</td>
+              <tr v-for="usuario in usuario" :key="usuario.id">
+                <td>{{ usuario.id }}</td>
+                <td>{{ usuario.user }}</td>
+                <td>{{ usuario.password }}</td>
+                <td>{{ usuario.fechaRegistro }}</td>
+                <td>{{ usuario.idEmpleado }}</td>
+                <td>{{ usuario.idRol }}</td>
                 <td>
                   <div class="btn-group" role="label" aria-label="">
                     <!-- |<router-link :to="{name:'editar',param:{id:articulo.id}}" class="btn btn-info">Editar</router-link> | -->
                     |<button
                       type="button"
-                      v-on:click="borrarArticulo(articulo.id)"
+                      v-on:click="borrarUsuario(usuario.id)"
                       class="btn btn-danger"
                     >
                       Eliminar</button
@@ -47,24 +50,24 @@ import axios from "axios";
 export default {
   data() {
     return {
-      articulos: [],
+      usuario: [],
     };
   },
   created: function () {
-    this.consultarArticulos();
+    this.consultarUsuario();
   },
   methods: {
-    consultarArticulos() {
-      axios.get("https://localhost:7053/articulos").then((result) => {
-        console.log(result.data);
-        this.articulos = result.data;
+    consultarUsuario() {
+      axios.get("https://localhost:7204/Usuario").then((result) => {
+        console.log(result.data.result);
+        this.usuario = result.data.result;
       });
     },
 
-    borrarArticulo(id) {
+    borrarUsuario(id) {
       console.log(id);
 
-      axios.delete("https://localhost:7053/articulos/borrar/" + id);
+      axios.delete("https://localhost:7204/Usuario" + id);
 
       window.location.href = "Listar";
     },
