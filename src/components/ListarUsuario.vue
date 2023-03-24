@@ -82,7 +82,6 @@ export default {
 
     EditarUsuario(id) {
       console.log(id);
-      this.id;
       window.location.href = "editar";
     },
   },

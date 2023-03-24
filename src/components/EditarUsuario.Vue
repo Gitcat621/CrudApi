@@ -14,7 +14,7 @@
                 v-model="usuario.id"
                 aria-describedby="helpId"
                 id="nombre"
-                placeholder="Nombre"
+                placeholder="ID"
               />
             </div>
             <div class="form-group">

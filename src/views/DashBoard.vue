@@ -14,6 +14,7 @@
                     <li><RouterLink to="/"><i class="fa-solid fa-house-chimney"></i> Home</RouterLink></li>
                     <li><RouterLink to="/About"><i class="fa-solid fa-circle-info"></i> About</RouterLink></li>
                     <li><RouterLink to="/Listar"><i class="fa-solid fa-list"></i> Listar</RouterLink></li>
+                    <li><RouterLink to="/buscar"><i class="fa-solid fa-list"></i> Buscar</RouterLink></li>
                     <li><RouterLink to="/Crear"><i class="fa-solid fa-pencil"></i> Crear</RouterLink></li>
                     <li><a href="" itemid="Paquetes"><i class="fa-solid fa-tag"></i> Paquetes</a></li>
                      <li><a href="" itemid="Camion"><i class="fa-solid fa-truck"></i> Camionetas</a></li>
