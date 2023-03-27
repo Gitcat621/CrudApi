@@ -1,10 +1,23 @@
 <template>
     <label id="header"></label><br><br><br>
+    {{ msg2 }}
     <div class="container">
       <div class="card">
-        <div class="card-header">Agregar Usuario</div>
+        <div class="card-header">Editar Usuario</div>
         <div class="card-body">
-          <form v-on:submit.prevent="agregarRegistro">
+          <form v-on:submit.prevent="editarRegistro">
+            <div class="form-group">
+                <label for="">{{ msg2 }}</label>
+                <input
+                type="text"
+                class="form-control"
+                name="nombre"
+                aria-describedby="helpId"
+                id="nombre"
+                placeholder="ID"
+                value="{{ msg2 }}"
+              />
+            </div>
             <div class="form-group">
               <label for="">User:</label>
               <input
@@ -44,7 +57,7 @@
                 id="precio"
                 v-model="usuario.fechaRegistro"
                 aria-describedby="helpId"
-                placeholder="2023-03-26T22:31:58.806Z"
+                placeholder="00/00/00"
               />
               <small id="helpId" class="form-text" text-muted
                 >Ingresa la fecha de hoy</small
@@ -57,9 +70,9 @@
                 class="form-control"
                 name="precio"
                 id="precio"
-                v-model="usuario.fkEmpleado"
+                v-model="usuario.idEmpleado"
                 aria-describedby="helpId"
-                placeholder="a"
+                placeholder="1-10"
               />
               <small id="helpId" class="form-text" text-muted
                 >Ingresa el id del empleado</small
@@ -72,24 +85,10 @@
                 class="form-control"
                 name="precio"
                 id="precio"
-                v-model="usuario.fkRol"
+                v-model="usuario.idRol"
                 aria-describedby="helpId"
-                placeholder="e"
+                placeholder="1-10"
               />
-              <small id="helpId" class="form-text" text-muted
-                >Ingresa el id del rol</small
-              >
-            </div>
-
-            <div class="form-group">
-              <label for="">ComboBox:</label>
-              <select v-model="selected" class="form-control">
-              <option disabled value="">Seleccione un elemento</option>
-              <option>A</option>
-              <option>B</option>
-              <option>C</option>
-              </select>
-              <span>Seleccionado: {{ selected }}</span><br>
               <small id="helpId" class="form-text" text-muted
                 >Ingresa el id del rol</small
               >
@@ -109,34 +108,41 @@
     </div>
   </template>
   
-  <script>
+<script>
   import axios from "axios";
   export default {
+    props:["msg2"],
     data() {
       return {
+        PK: "",
         usuario: {},
       };
     },
   
     methods: {
-      agregarRegistro() {
+        editarRegistro(id) {
         console.log(this.usuario.data);
   
         var datosEnviar = {
           User: this.usuario.user,
           Password: this.usuario.password,
           FechaRegistro: this.usuario.fechaRegistro,
-          FkEmpleado: this.usuario.fkEmpleado,
-          FkRol: this.usuario.fkRol
+          IDEmpleado: this.usuario.idEmpleado,
+          IDRol: this.usuario.idRol,
         };
-  
+        
+        console.log(this.id + "aaaaaaaaaa");
         axios
-          .post("https://localhost:7204/Usuario/Crear", datosEnviar)
+          .put("https://localhost:7204/Usuario/Editar/" + id, datosEnviar)
           .then((result) => {
             console.log(result);
             window.location.href = "listar";
           });
-      },
+        },
+        watch(){
+        PK.function();{
+        this.$emit('PK',this.PK)}
+        }
     },
   };
   </script>

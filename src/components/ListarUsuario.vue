@@ -12,18 +12,18 @@
                 <th>User</th>
                 <th>Password</th>
                 <th>FechaRegistro</th>
-                <th>IDempleado</th>
-                <th>IDrol</th>
+                <th>Empleado</th>
+                <th>Rol</th>
               </tr>
             </thead>
             <tbody>
               <tr v-for="usuario in usuario" :key="usuario.id">
-                <td>{{ usuario.id }}</td>
+                <td>{{ usuario.pkUsuario }}</td>
                 <td>{{ usuario.user }}</td>
                 <td>{{ usuario.password }}</td>
                 <td>{{ usuario.fechaRegistro }}</td>
-                <td>{{ usuario.idEmpleado }}</td>
-                <td>{{ usuario.idRol }}</td>
+                <td>{{ usuario.empleado.nombre }}</td>
+                <td>{{ usuario.rol.nombre }}</td>
                 <td>
                   <div class="btn-group" role="label" aria-label="">
                     <!-- |<router-link :to="{name:'editar',param:{id:articulo.id}}" class="btn btn-info">Editar</router-link> | -->
@@ -47,9 +47,11 @@
               </tr>
             </tbody>
           </table>
+          |<button type="button" v-on:click="Crear" class="btn btn-success"
+      >Nuevo registro</button>
+    </div><br>
         </div>
       </div>
-    </div>
 </template>
 
 
@@ -59,6 +61,7 @@ export default {
   data() {
     return {
       usuario: [],
+      pkUsuario: 0
     };
   },
   created: function () {
@@ -83,6 +86,10 @@ export default {
     EditarUsuario(id) {
       console.log(id);
       window.location.href = "editar";
+    },
+
+    Crear() {
+      window.location.href = "crear";
     },
   },
 };

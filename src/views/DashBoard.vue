@@ -12,15 +12,15 @@
                     <ul class="menu"> 
                     <!--donde estan los simbolos de gato se pone la direcciona que se redireccionara-->
                     <li><RouterLink to="/"><i class="fa-solid fa-house-chimney"></i> Home</RouterLink></li>
-                    <li><RouterLink to="/About"><i class="fa-solid fa-circle-info"></i> About</RouterLink></li>
-                    <li><RouterLink to="/Listar"><i class="fa-solid fa-list"></i> Listar</RouterLink></li>
-                    <li><RouterLink to="/buscar"><i class="fa-solid fa-list"></i> Buscar</RouterLink></li>
-                    <li><RouterLink to="/Crear"><i class="fa-solid fa-pencil"></i> Crear</RouterLink></li>
-                    <li><a href="" itemid="Paquetes"><i class="fa-solid fa-tag"></i> Paquetes</a></li>
-                     <li><a href="" itemid="Camion"><i class="fa-solid fa-truck"></i> Camionetas</a></li>
-                     <li><a href="" itemid="Destino"><i class="fa-solid fa-calendar-days"></i> Salidas</a></li>
-                     <li><RouterLink to="/Login"><i class="fa-solid fa-right-to-bracket"></i> Login</RouterLink></li>
-                     <li><a href="" itemid="Destino"><i class="fa-solid fa-xmark"></i> Salir</a></li>
+                    <li><RouterLink to="/Listar"><i class="fa-solid fa-list"></i> Usuario</RouterLink></li>
+                    <li><RouterLink to="/Listarr"><i class="fa-solid fa-list"></i> Rol</RouterLink></li>
+                    <li><RouterLink to="/Listarp"><i class="fa-solid fa-list"></i> Puesto</RouterLink></li>
+                    <li><RouterLink to="/Listarf"><i class="fa-solid fa-list"></i> Factura</RouterLink></li>
+                    <li><RouterLink to="/Listare"><i class="fa-solid fa-list"></i> Empleados</RouterLink></li>
+                    <li><RouterLink to="/Listard"><i class="fa-solid fa-list"></i> Departamento</RouterLink></li>
+                    <li><RouterLink to="/padre"><i class="fa-solid fa-list"></i> padre</RouterLink></li>
+                    <li><RouterLink to="/hijo"><i class="fa-solid fa-list"></i> hijo</RouterLink></li>
+                    <li><RouterLink to="/prueba"><i class="fa-solid fa-list"></i> p</RouterLink></li>
                   </ul>
                  </div>
     </main>
