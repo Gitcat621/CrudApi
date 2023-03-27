@@ -12,7 +12,7 @@
     <div>
       <div class="card">
         <div class="card-header">Usuario</div>
-        <input v-model="pkUsuario">
+        <!-- <input v-model="pkUsuario"> -->
         <div class="card_body">
           <table class="table">
             <thead>
@@ -55,6 +55,7 @@
                 </td>
               </tr>
             </tbody>
+            <label v-on="pkUsuario">{{ pk }}</label>
           </table>
           |<button type="button" v-on:click="Crear" class="btn btn-success"
       >Nuevo registro</button>
@@ -82,7 +83,7 @@ export default{
         return{
             usuario: [],
             compartir: '',
-            pkUsuario: '',
+            pk: '',
             msghijo: '',
             msgprueba: ''
         };
@@ -122,7 +123,7 @@ export default{
 
         EditarUsuario(pkUsuario) {
         console.log(pkUsuario);
-        this.msgprueba = msg2;
+        this.pk = pkUsuario;
         // window.location.href = "editar";
         },
 
