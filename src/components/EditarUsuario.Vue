@@ -4,26 +4,14 @@
       <div class="card">
         <div class="card-header">Editar Usuario</div>
         <div class="card-body">
-          <form v-on:submit.prevent="editarRegistro">
-            <div class="form-group">
-                <label for="">ID User:</label>
-                <input
-                type="text"
-                class="form-control"
-                name="nombre"
-                v-model="usuario.id"
-                aria-describedby="helpId"
-                id="nombre"
-                placeholder="ID"
-              />
-            </div>
+          <form @submit.prevent="submitForm">
             <div class="form-group">
               <label for="">User:</label>
               <input
                 type="text"
                 class="form-control"
                 name="nombre"
-                v-model="usuario.user"
+                v-model="datos.user"
                 aria-describedby="helpId"
                 id="nombre"
                 placeholder="Nombre"
@@ -39,7 +27,7 @@
                 class="form-control"
                 name="nombre"
                 id="nombre"
-                v-model="usuario.password"
+                v-model="datos.password"
                 aria-describedby="helpId"
                 placeholder="Password"
               />
@@ -54,7 +42,7 @@
                 class="form-control"
                 name="precio"
                 id="precio"
-                v-model="usuario.fechaRegistro"
+                v-model="datos.fechaRegistro"
                 aria-describedby="helpId"
                 placeholder="00/00/00"
               />
@@ -62,45 +50,9 @@
                 >Ingresa la fecha de hoy</small
               >
             </div>
-            <div class="form-group">
-              <label for="">IDempleado:</label>
-              <input
-                type="text"
-                class="form-control"
-                name="precio"
-                id="precio"
-                v-model="usuario.idEmpleado"
-                aria-describedby="helpId"
-                placeholder="1-10"
-              />
-              <small id="helpId" class="form-text" text-muted
-                >Ingresa el id del empleado</small
-              >
-            </div>
-            <div class="form-group">
-              <label for="">IDrol:</label>
-              <input
-                type="text"
-                class="form-control"
-                name="precio"
-                id="precio"
-                v-model="usuario.idRol"
-                aria-describedby="helpId"
-                placeholder="1-10"
-              />
-              <small id="helpId" class="form-text" text-muted
-                >Ingresa el id del rol</small
-              >
-            </div>
-  
             <br />
   
-            <div class="btn-group" role="group">
-              |<button type="submit" class="btn btn-success">Agregar</button>|
-              |<router-link :to="{ name: 'listar' }" class="btn btn-danger"
-                >Cancelar</router-link
-              >|
-            </div>
+            <button type="submit" class="btn btn-primary">Guardar cambios</button>
           </form>
         </div>
       </div>
@@ -108,36 +60,51 @@
   </template>
   
   <script>
-  import axios from "axios";
+  import axios from 'axios';
+  
   export default {
     data() {
       return {
-        usuario: {},
-      };
+        id: null,
+        datos: {
+          user: '',
+          password: '',
+          fechaRegistro: ''
+        },
+        clientes: []
+      }
     },
+    mounted() {
+      this.id = this.$route.params.id;
+      axios.get("https://localhost:7204/Usuario/ByID/" + this.id)
+        .then(response => {
+          this.datos = response.data.result;
+        })
+        .catch(error => {
+          console.error(error);
+        });
   
+      axios.get("https://localhost:7204/Usuario")
+        .then(response => {
+          this.clientes = response.data.result;
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    },
     methods: {
-        editarRegistro(id) {
-        console.log(this.usuario.data);
-  
-        var datosEnviar = {
-          User: this.usuario.user,
-          Password: this.usuario.password,
-          FechaRegistro: this.usuario.fechaRegistro,
-          IDEmpleado: this.usuario.idEmpleado,
-          IDRol: this.usuario.idRol,
-        };
-        
-        console.log(this.id + "aaaaaaaaaa");
-        axios
-          .put("https://localhost:7204/Usuario/Editar/" + id, datosEnviar)
-          .then((result) => {
-            console.log(result);
-            window.location.href = "listar";
+      submitForm() {
+        axios.put("https://localhost:7204/Usuario/Editar/" + this.id, this.datos)
+          .then(response => {
+            console.log('Registro actualizado:', response.data.result);
+            this.$router.push('/')
+          })
+          .catch(error => {
+            console.error(error);
           });
-      },
-    },
-  };
+      }
+    }
+  }
   </script>
 
 <style scoped>

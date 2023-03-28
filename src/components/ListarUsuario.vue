@@ -17,8 +17,8 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="usuario in usuario" :key="usuario.id">
-                <td>{{ usuario.pkUsuario }}</td>
+              <tr v-for="usuario ,i in usuario" :key="usuario.id">
+                <td>{{ i+1 }}</td>
                 <td>{{ usuario.user }}</td>
                 <td>{{ usuario.password }}</td>
                 <td>{{ usuario.fechaRegistro }}</td>
@@ -35,13 +35,7 @@
                       Eliminar</button
                     >|
 
-                    |<button
-                      type="button"
-                      v-on:click="EditarUsuario(usuario.id)"
-                      class="btn btn-warning"
-                    >
-                      Editar</button
-                    >
+                    <RouterLink :to="{path:'/Editar/'+usuario.pkUsuario}" class="btn btn-warning">Editar</RouterLink>
                   </div>
                 </td>
               </tr>

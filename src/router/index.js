@@ -27,7 +27,7 @@ import CrearEmpleado from "../components/CrearEmpleado.vue";
 // ----------------------Departamento------------------------------------------
 import ListarDepartamento from "../components/ListarDepartamento.vue";
 import CrearDepartamento from "../components/CrearDepartamento.vue";
-// import EditarRol from "../components/EditarRol.vue";
+import EditarDepartamento from "../components/EditarDepartamento.vue";
 // import BuscarRol from "../components/BuscarRol.vue";
 // ----------------------Cliente------------------------------------------
 import ListarCliente from "../components/ListarCliente.vue";
@@ -38,6 +38,7 @@ import CrearCliente from "../components/CrearCliente.vue";
 import Padre from "../components/Padre.vue";
 import Hijo from "../components/Hijo.vue";
 import EditarPrueba from '../components/EditarPrueba.vue';
+import Cris from '../components/Cris.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -58,7 +59,7 @@ const router = createRouter({
       component: CrearUsuario,
     },
     {
-      path: '/editar',
+      path: '/editar/:id',
       name: 'editar',
       component: EditarUsuario,
     },
@@ -162,11 +163,11 @@ const router = createRouter({
       name: 'creard',
       component: CrearDepartamento,
     },
-    // {
-    //   path: '/editarr',
-    //   name: 'editarr',
-    //   component: EditarRol,
-    // },
+    {
+    path: '/editard/:id',
+    name: 'editard',
+    component: EditarDepartamento,
+    },
     // {
     //   path: '/buscarr',
     //   name: 'buscarr',
@@ -208,6 +209,11 @@ const router = createRouter({
       path: '/prueba',
       name: 'prueba',
       component: EditarPrueba,
+    },
+    {
+      path: '/cris/:id',
+      name: 'cris',
+      component: Cris,
     },
 
 

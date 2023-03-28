@@ -71,16 +71,16 @@ methods: {
 
     axios.delete("https://localhost:7204/Rol/Borrar/" + pkRol);
 
-    window.location.href = "listarp";
+    window.location.href = "listarr";
   },
 
   Editar(id) {
     console.log(id);
-    window.location.href = "editarp";
+    window.location.href = "editarr";
   },
 
   Crear() {
-    window.location.href = "crearp";
+    window.location.href = "crearr";
   },
 },
 };
