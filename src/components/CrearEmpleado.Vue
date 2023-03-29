@@ -17,7 +17,7 @@
               placeholder="Nombre"
             />
             <small id="helpId" class="form-text" text-muted
-              >Ingresa el nombre del usuario</small
+              >Ingresa el nombre del empleado</small
             >
           </div>
           <div class="form-group">
@@ -32,7 +32,7 @@
               placeholder="Apellidos"
             />
             <small id="helpId" class="form-text" text-muted
-              >Ingresa el passwordr</small
+              >Ingresa los apellidos</small
             >
           </div>
           <div class="form-group">
@@ -47,7 +47,7 @@
               placeholder="Direccion"
             />
             <small id="helpId" class="form-text" text-muted
-              >Ingresa la fecha de hoy</small
+              >Ingresa la direccion</small
             >
           </div>
           <div class="form-group">
@@ -62,38 +62,22 @@
               placeholder="Ciudad"
             />
             <small id="helpId" class="form-text" text-muted
-              >Ingresa el id del empleado</small
+              >Ingresa la ciudad</small
             >
           </div> 
+          <label for="fkCliente">Seleccionar un Fk Puesto:</label>
+              <select id="fkCliente" v-model="datos.fkPuesto" class="form-control">
+                <option v-for="puesto in puestos" :key="puesto.id" :value="puesto.id">
+                  {{puesto.nombre}}
+                </option>
+              </select>
           <div class="form-group">
-            <label for="">IDPuesto:</label>
-            <input
-              type="text"
-              class="form-control"
-              name="precio"
-              id="precio"
-              v-model="empleado.fkPuesto"
-              aria-describedby="helpId"
-              placeholder="1-10"
-            />
-            <small id="helpId" class="form-text" text-muted
-              >Ingresa el id del empleado</small
-            >
-          </div> 
-          <div class="form-group">
-            <label for="">IDDepartamento:</label>
-            <input
-              type="text"
-              class="form-control"
-              name="precio"
-              id="precio"
-              v-model="empleado.fkDepartamento"
-              aria-describedby="helpId"
-              placeholder="1-10"
-            />
-            <small id="helpId" class="form-text" text-muted
-              >Ingresa el id del empleado</small
-            >
+            <label for="fkCliente">Seleccionar un Fk Departamento:</label>
+              <select id="fkCliente" v-model="datos.fkDepartamento" class="form-control">
+                <option v-for="departamento in departamentos" :key="departamento.id" :value="departamento.id">
+                  {{departamento.nombre}}
+                </option>
+              </select>
           </div> 
           <br />
 
@@ -115,9 +99,31 @@ export default {
   data() {
     return {
       empleado: {},
+      datos: {
+          fkPuesto: null,
+          fkDepartamento: null
+        },
+        puestos: [],
+        departamentos: []
     };
   },
+  mounted() {
+      axios.get("https://localhost:7204/Puesto")
+        .then(response => {
+          this.puestos = response.data.result;
+        })
+        .catch(error => {
+          console.error(error);
+      });
 
+      axios.get("https://localhost:7204/Departamento")
+        .then(response => {
+          this.departamentos = response.data.result;
+        })
+        .catch(error => {
+          console.error(error);
+      });
+    },
   methods: {
     agregarRegistro() {
       console.log(this.empleado.data);

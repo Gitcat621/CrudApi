@@ -65,7 +65,7 @@ export default {
       axios.put("https://localhost:7204/Departamento/Editar/" + this.id, this.datos)
         .then(response => {
           console.log('Registro actualizado:', response.data.result);
-          this.$router.push('/')
+          this.$router.push('/listard')
         })
         .catch(error => {
           console.error(error);

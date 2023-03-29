@@ -33,7 +33,7 @@
                   Eliminar</button
                 >|
 
-                <RouterLink :to="{path:'/Cris/'+factura.pkFactura}" class="btn btn-warning">Editar</RouterLink>
+                <RouterLink :to="{path:'/Editarf/'+factura.pkFactura}" class="btn btn-warning">Editar</RouterLink>
               </div>
             </td>
           </tr>

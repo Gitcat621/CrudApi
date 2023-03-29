@@ -19,9 +19,6 @@
                     <li><RouterLink to="/Listare"><i class="fa-solid fa-list"></i> Empleados</RouterLink></li>
                     <li><RouterLink to="/Listard"><i class="fa-solid fa-list"></i> Departamento</RouterLink></li>
                     <li><RouterLink to="/Listarc"><i class="fa-solid fa-list"></i> Clientes</RouterLink></li>
-                    <li><RouterLink to="/padre"><i class="fa-solid fa-list"></i> padre</RouterLink></li>
-                    <li><RouterLink to="/hijo"><i class="fa-solid fa-list"></i> hijo</RouterLink></li>
-                    <li><RouterLink to="/prueba"><i class="fa-solid fa-list"></i> p</RouterLink></li>
                   </ul>
                  </div>
     </main>

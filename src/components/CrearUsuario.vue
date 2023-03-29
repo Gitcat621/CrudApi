@@ -50,51 +50,25 @@
                 >Ingresa la fecha de hoy</small
               >
             </div>
-            <div class="form-group">
-              <label for="">IDempleado:</label>
-              <input
-                type="text"
-                class="form-control"
-                name="precio"
-                id="precio"
-                v-model="usuario.fkEmpleado"
-                aria-describedby="helpId"
-                placeholder="a"
-              />
-              <small id="helpId" class="form-text" text-muted
-                >Ingresa el id del empleado</small
-              >
-            </div>
-            <div class="form-group">
-              <label for="">IDrol:</label>
-              <input
-                type="text"
-                class="form-control"
-                name="precio"
-                id="precio"
-                v-model="usuario.fkRol"
-                aria-describedby="helpId"
-                placeholder="e"
-              />
-              <small id="helpId" class="form-text" text-muted
-                >Ingresa el id del rol</small
-              >
-            </div>
 
-            <div class="form-group">
-              <label for="">ComboBox:</label>
-              <select v-model="selected" class="form-control">
-              <option disabled value="">Seleccione un elemento</option>
-              <option>A</option>
-              <option>B</option>
-              <option>C</option>
+            {{ usuario }}
+            
+            <label for="fkCliente">Seleccionar un Fk Rol:</label>
+              <select id="fkCliente" v-model="datos.fkRol" class="form-control">
+                <option v-for="rol in roles" :key="rol.pkRol" :value="rol.pkRol">
+                  {{rol.nombre}}
+                </option>
               </select>
-              <span>Seleccionado: {{ selected }}</span><br>
-              <small id="helpId" class="form-text" text-muted
-                >Ingresa el id del rol</small
-              >
-            </div>
-  
+              <span>Seleccionado: {{ 'fk ' + datos.fkRol }}</span>
+              <input :value="datos.fkRol">
+
+              <label for="fkCliente">Seleccionar un Fk Empleado:</label>
+              <select id="fkCliente" v-model="datos.fkEmpleado" class="form-control">
+                <option v-for="empleado in empleados" :key="empleado.pkEmpleado" :value="empleado.pkEmpleado">
+                  {{empleado.nombre}}
+                </option>
+              </select>
+              <span>Seleccionado: {{ 'fk ' + datos.fkEmpleado }}</span>
             <br />
   
             <div class="btn-group" role="group">
@@ -115,9 +89,31 @@
     data() {
       return {
         usuario: {},
-      };
+        datos: {
+          fkRol: 0,
+          fkEmpleado: 0
+        },
+        roles: [],
+        empleados: []
+      }
     },
-  
+    mounted() {
+      axios.get("https://localhost:7204/Rol")
+        .then(response => {
+          this.roles = response.data.result;
+        })
+        .catch(error => {
+          console.error(error);
+      });
+
+      axios.get("https://localhost:7204/Empleado")
+        .then(response => {
+          this.empleados = response.data.result;
+        })
+        .catch(error => {
+          console.error(error);
+      });
+    },
     methods: {
       agregarRegistro() {
         console.log(this.usuario.data);
@@ -129,7 +125,7 @@
           FkEmpleado: this.usuario.fkEmpleado,
           FkRol: this.usuario.fkRol
         };
-  
+        
         axios
           .post("https://localhost:7204/Usuario/Crear", datosEnviar)
           .then((result) => {

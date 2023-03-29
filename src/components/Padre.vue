@@ -63,21 +63,14 @@
         </div>
       </div>
 
-      <section>
-            <h1>PRUEBA</h1>
-            <EditarPrueba :msg2="pkUsuario" @PK="EnPadre2" />
-        </section>
-
 </template>
 
 <script>
 import Hijo from '../components/Hijo.vue';
-import EditarPrueba from '../components/EditarPrueba.vue';
 import axios from "axios";
 export default{
     components:{
-        Hijo,
-        EditarPrueba
+        Hijo
     },
     data: function(){
         return{

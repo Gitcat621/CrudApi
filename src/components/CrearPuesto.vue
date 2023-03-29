@@ -6,7 +6,7 @@
         <div class="card-body">
           <form v-on:submit.prevent="agregarRegistro">
             <div class="form-group">
-              <label for="">Rol:</label>
+              <label for="">Puesto:</label>
               <input
                 type="text"
                 class="form-control"
@@ -17,7 +17,7 @@
                 placeholder="Nombre"
               />
               <small id="helpId" class="form-text" text-muted
-                >Ingresa el nombre del rol</small>
+                >Ingresa el nombre del puesto</small>
 
             </div><br>
   

@@ -2,52 +2,22 @@
     <label id="header"></label><br><br><br>
     <div class="container">
       <div class="card">
-        <div class="card-header">Editar Usuario</div>
+        <div class="card-header">Editar Puesto</div>
         <div class="card-body">
           <form @submit.prevent="submitForm">
             <div class="form-group">
-              <label for="">User:</label>
+              <label for="">Nombre:</label>
               <input
                 type="text"
                 class="form-control"
                 name="nombre"
-                v-model="datos.user"
+                v-model="datos.nombre"
                 aria-describedby="helpId"
                 id="nombre"
                 placeholder="Nombre"
               />
               <small id="helpId" class="form-text" text-muted
-                >Ingresa el nombre del usuario</small
-              >
-            </div>
-            <div class="form-group">
-              <label for="">Password:</label>
-              <input
-                type="text"
-                class="form-control"
-                name="nombre"
-                id="nombre"
-                v-model="datos.password"
-                aria-describedby="helpId"
-                placeholder="Password"
-              />
-              <small id="helpId" class="form-text" text-muted
-                >Ingresa el passwordr</small
-              >
-            </div>
-            <div class="form-group">
-              <label for="">FechaRegistro:</label>
-              <input
-                type="text"
-                class="form-control"
-                name="precio"
-                id="precio"
-                v-model="datos.fechaRegistro"
-                aria-describedby="helpId"
-                placeholder="00/00/00"
-              />
-              <small id="helpId" class="form-text" text-muted
-                >Ingresa la fecha de hoy</small
+                >Ingresa el nombre del puesto</small
               >
             </div>
             <br />
@@ -59,7 +29,7 @@
     </div>
   </template>
   
-  <script>
+<script>
   import axios from 'axios';
   
   export default {
@@ -67,16 +37,14 @@
       return {
         id: null,
         datos: {
-          user: '',
-          password: '',
-          fechaRegistro: ''
+          nombre: ''
         },
         clientes: []
       }
     },
     mounted() {
       this.id = this.$route.params.id;
-      axios.get("https://localhost:7204/Usuario/ByID/" + this.id)
+      axios.get("https://localhost:7204/Puesto/ByID/" + this.id)
         .then(response => {
           this.datos = response.data.result;
         })
@@ -84,7 +52,7 @@
           console.error(error);
         });
   
-      axios.get("https://localhost:7204/Usuario")
+      axios.get("https://localhost:7204/Puesto")
         .then(response => {
           this.clientes = response.data.result;
         })
@@ -94,10 +62,10 @@
     },
     methods: {
       submitForm() {
-        axios.put("https://localhost:7204/Usuario/Editar/" + this.id, this.datos)
+        axios.put("https://localhost:7204/Puesto/Editar/" + this.id, this.datos)
           .then(response => {
             console.log('Registro actualizado:', response.data.result);
-            this.$router.push('/listar')
+            this.$router.push('/listarp')
           })
           .catch(error => {
             console.error(error);
@@ -105,7 +73,7 @@
       }
     }
   }
-  </script>
+</script>
 
 <style scoped>
 #header{

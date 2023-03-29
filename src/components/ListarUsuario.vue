@@ -18,7 +18,7 @@
             </thead>
             <tbody>
               <tr v-for="usuario ,i in usuario" :key="usuario.id">
-                <td>{{ i+1 }}</td>
+                <td>{{ usuario.pkUsuario }}</td>
                 <td>{{ usuario.user }}</td>
                 <td>{{ usuario.password }}</td>
                 <td>{{ usuario.fechaRegistro }}</td>
@@ -43,11 +43,12 @@
           </table>
           |<button type="button" v-on:click="Crear" class="btn btn-success"
       >Nuevo registro</button>
+      |<button type="button" v-on:click="Buscar" class="btn btn-primary"
+      >Buscar por ID</button>
     </div><br>
         </div>
       </div>
 </template>
-
 
 <script>
 import axios from "axios";
@@ -77,13 +78,12 @@ export default {
       window.location.href = "listar";
     },
 
-    EditarUsuario(id) {
-      console.log(id);
-      window.location.href = "editar";
-    },
-
     Crear() {
       window.location.href = "crear";
+    },
+
+    Buscar() {
+      window.location.href = "buscar";
     },
   },
 };

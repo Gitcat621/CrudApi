@@ -2,52 +2,67 @@
     <label id="header"></label><br><br><br>
     <div class="container">
       <div class="card">
-        <div class="card-header">Editar Usuario</div>
+        <div class="card-header">Editar Empleado</div>
         <div class="card-body">
           <form @submit.prevent="submitForm">
             <div class="form-group">
-              <label for="">User:</label>
+              <label for="">Nombre:</label>
               <input
                 type="text"
                 class="form-control"
                 name="nombre"
-                v-model="datos.user"
+                v-model="datos.nombre"
                 aria-describedby="helpId"
                 id="nombre"
                 placeholder="Nombre"
               />
               <small id="helpId" class="form-text" text-muted
-                >Ingresa el nombre del usuario</small
+                >Ingresa el nombre del empleado</small
               >
             </div>
             <div class="form-group">
-              <label for="">Password:</label>
+              <label for="">Apellidos:</label>
               <input
                 type="text"
                 class="form-control"
                 name="nombre"
                 id="nombre"
-                v-model="datos.password"
+                v-model="datos.apellidos"
                 aria-describedby="helpId"
-                placeholder="Password"
+                placeholder="Apellidos"
               />
               <small id="helpId" class="form-text" text-muted
-                >Ingresa el passwordr</small
+                >Ingresa los apellidos</small
               >
             </div>
             <div class="form-group">
-              <label for="">FechaRegistro:</label>
+              <label for="">Direccion:</label>
               <input
                 type="text"
                 class="form-control"
                 name="precio"
                 id="precio"
-                v-model="datos.fechaRegistro"
+                v-model="datos.direccion"
+                aria-describedby="helpId"
+                placeholder="Direccion"
+              />
+              <small id="helpId" class="form-text" text-muted
+                >Ingresa su direccion</small
+              >
+            </div>
+            <div class="form-group">
+              <label for="">Ciudad:</label>
+              <input
+                type="text"
+                class="form-control"
+                name="precio"
+                id="precio"
+                v-model="datos.ciudad"
                 aria-describedby="helpId"
                 placeholder="00/00/00"
               />
               <small id="helpId" class="form-text" text-muted
-                >Ingresa la fecha de hoy</small
+                >Ingresa su ciudad</small
               >
             </div>
             <br />
@@ -67,16 +82,17 @@
       return {
         id: null,
         datos: {
-          user: '',
-          password: '',
-          fechaRegistro: ''
+          nombre: '',
+          apellidos: '',
+          direccion: '',
+          ciudad: '',
         },
         clientes: []
       }
     },
     mounted() {
       this.id = this.$route.params.id;
-      axios.get("https://localhost:7204/Usuario/ByID/" + this.id)
+      axios.get("https://localhost:7204/Empleado/ByID/" + this.id)
         .then(response => {
           this.datos = response.data.result;
         })
@@ -84,7 +100,7 @@
           console.error(error);
         });
   
-      axios.get("https://localhost:7204/Usuario")
+      axios.get("https://localhost:7204/Empleado")
         .then(response => {
           this.clientes = response.data.result;
         })
@@ -94,10 +110,10 @@
     },
     methods: {
       submitForm() {
-        axios.put("https://localhost:7204/Usuario/Editar/" + this.id, this.datos)
+        axios.put("https://localhost:7204/Empleado/Editar/" + this.id, this.datos)
           .then(response => {
             console.log('Registro actualizado:', response.data.result);
-            this.$router.push('/listar')
+            this.$router.push('/listare')
           })
           .catch(error => {
             console.error(error);

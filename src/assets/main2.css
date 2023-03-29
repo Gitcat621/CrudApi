@@ -1,9 +1,6 @@
 body {
-   /* background-image:  url("https://cdn.pixabay.com/photo/2012/04/15/19/14/honeycomb-34984_1280.png"),url("https://aaaeropotoco.com/wp-content/uploads/2021/05/degradado.png"); */
-   /* background-image: url("https://64.media.tumblr.com/10a4d2027ab889e65bf80b1e5efeb93d/tumblr_inline_oto7holPV61tzykrd_500.gifv"); */
-   /* background-image: url("https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNjE2YzkwMzYwOGEzZThhYTEyY2RiMDY1N2E0MmE3NTk5MjJkZjYzYyZjdD1z/FHcRX5OWtvIaKTWyTX/giphy.gif"); */
-    /* background-color: rgb(32, 152, 207); */
-    background-color: black;
+    /* background-image: url("https://64.media.tumblr.com/10a4d2027ab889e65bf80b1e5efeb93d/tumblr_inline_oto7holPV61tzykrd_500.gifv"); */
+    background-color: rgb(253, 253, 253);
     transition: color 0.5s, background-color 0.5s;
     line-height: 1.6;
     font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,

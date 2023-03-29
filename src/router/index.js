@@ -7,22 +7,22 @@ import BuscarUsuario from "../components/BuscarUsuario.vue";
     // ----------------------Rol------------------------------------------
 import ListarRol from "../components/ListarRol.vue";
 import CrearRol from "../components/CrearRol.vue";
-// import EditarRol from "../components/EditarRol.vue";
+import EditarRol from "../components/EditarRol.vue";
 // import BuscarRol from "../components/BuscarRol.vue";
     // ----------------------Puesto------------------------------------------
 import ListarPuesto from "../components/ListarPuesto.vue";
 import CrearPuesto from "../components/CrearPuesto.vue";
-// import EditarRol from "../components/EditarRol.vue";
+import EditarPuesto from "../components/EditarPuesto.vue";
 // import BuscarRol from "../components/BuscarRol.vue";
-    // ----------------------Puesto------------------------------------------
+    // ----------------------Factura------------------------------------------
 import ListarFactura from "../components/ListarFactura.vue";
 import CrearFactura from "../components/CrearFactura.vue";
-// import EditarRol from "../components/EditarRol.vue";
+import EditarFactura from "../components/EditarFactura.vue";
 // import BuscarRol from "../components/BuscarRol.vue";
 // ----------------------Empleado------------------------------------------
 import ListarEmpleado from "../components/ListarEmpleado.vue";
 import CrearEmpleado from "../components/CrearEmpleado.vue";
-// import EditarRol from "../components/EditarRol.vue";
+import EditarEmpleado from "../components/EditarEmpleado.vue";
 // import BuscarRol from "../components/BuscarRol.vue";
 // ----------------------Departamento------------------------------------------
 import ListarDepartamento from "../components/ListarDepartamento.vue";
@@ -32,13 +32,14 @@ import EditarDepartamento from "../components/EditarDepartamento.vue";
 // ----------------------Cliente------------------------------------------
 import ListarCliente from "../components/ListarCliente.vue";
 import CrearCliente from "../components/CrearCliente.vue";
-// import EditarRol from "../components/EditarRol.vue";
+import EditarCliente from "../components/EditarCliente.vue";
 // import BuscarRol from "../components/BuscarRol.vue";
 
 import Padre from "../components/Padre.vue";
 import Hijo from "../components/Hijo.vue";
-import EditarPrueba from '../components/EditarPrueba.vue';
 import Cris from '../components/Cris.vue';
+import Cris2 from '../components/Cris2.vue';
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -79,11 +80,11 @@ const router = createRouter({
       name: 'crearr',
       component: CrearRol,
     },
-    // {
-    //   path: '/editarr',
-    //   name: 'editarr',
-    //   component: EditarRol,
-    // },
+    {
+      path: '/editarr/:id',
+      name: 'editarr',
+      component: EditarRol,
+    },
     // {
     //   path: '/buscarr',
     //   name: 'buscarr',
@@ -100,11 +101,11 @@ const router = createRouter({
       name: 'crearp',
       component: CrearPuesto,
     },
-    // {
-    //   path: '/editarr',
-    //   name: 'editarr',
-    //   component: EditarRol,
-    // },
+    {
+      path: '/editarp/:id',
+      name: 'editarp',
+      component: EditarPuesto,
+    },
     // {
     //   path: '/buscarr',
     //   name: 'buscarr',
@@ -121,11 +122,11 @@ const router = createRouter({
       name: 'crearf',
       component: CrearFactura,
     },
-    // {
-    //   path: '/editarr',
-    //   name: 'editarr',
-    //   component: EditarRol,
-    // },
+    {
+      path: '/editarf/:id',
+      name: 'editarf',
+      component: EditarFactura,
+    },
     // {
     //   path: '/buscarr',
     //   name: 'buscarr',
@@ -142,11 +143,11 @@ const router = createRouter({
       name: 'creare',
       component: CrearEmpleado,
     },
-    // {
-    //   path: '/editarr',
-    //   name: 'editarr',
-    //   component: EditarRol,
-    // },
+    {
+      path: '/editare/:id',
+      name: 'editare',
+      component: EditarEmpleado,
+    },
     // {
     //   path: '/buscarr',
     //   name: 'buscarr',
@@ -184,11 +185,11 @@ const router = createRouter({
       name: 'crearc',
       component: CrearCliente,
     },
-    // {
-    //   path: '/editarr',
-    //   name: 'editarr',
-    //   component: EditarRol,
-    // },
+    {
+      path: '/editarc/:id',
+      name: 'editarc/',
+      component: EditarCliente,
+    },
     // {
     //   path: '/buscarr',
     //   name: 'buscarr',
@@ -206,14 +207,14 @@ const router = createRouter({
       component: Hijo,
     },
     {
-      path: '/prueba',
-      name: 'prueba',
-      component: EditarPrueba,
-    },
-    {
       path: '/cris/:id',
       name: 'cris',
       component: Cris,
+    },
+    {
+      path: '/cris2/',
+      name: 'cris2',
+      component: Cris2,
     },
 
 

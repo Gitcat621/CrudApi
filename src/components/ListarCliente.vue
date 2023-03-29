@@ -2,7 +2,7 @@
     <label id="header"></label><br><br><br>
   <div>
     <div class="card">
-      <div class="card-header">Factura</div>
+      <div class="card-header">Cliente</div>
   
       <div class="card_body">
         <table class="table">
@@ -35,13 +35,7 @@
                     Eliminar</button
                   >|
   
-                  |<button
-                    type="button"
-                    v-on:click="Editar(cliente.pkCliente)"
-                    class="btn btn-warning"
-                  >
-                    Editar</button
-                  >
+                  <RouterLink :to="{path:'/editarc/'+cliente.pkCliente}" class="btn btn-warning">Editar</RouterLink>
                 </div>
               </td>
             </tr>

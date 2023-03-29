@@ -2,22 +2,22 @@
     <label id="header"></label><br><br><br>
     <div class="container">
       <div class="card">
-        <div class="card-header">Agregar Factura</div>
+        <div class="card-header">Editar Usuario</div>
         <div class="card-body">
-          <form v-on:submit.prevent="agregarRegistro">
+          <form @submit.prevent="submitForm">
             <div class="form-group">
               <label for="">RazonSocial:</label>
               <input
                 type="text"
                 class="form-control"
                 name="nombre"
-                v-model="factura.razonSocial"
+                v-model="datos.razonSocial"
                 aria-describedby="helpId"
                 id="nombre"
-                placeholder="Razon"
+                placeholder="Nombre"
               />
               <small id="helpId" class="form-text" text-muted
-                >Ingresa la Razon Social</small
+                >Ingresa la Razon social</small
               >
             </div>
             <div class="form-group">
@@ -27,9 +27,9 @@
                 class="form-control"
                 name="nombre"
                 id="nombre"
-                v-model="factura.fecha"
+                v-model="datos.fecha"
                 aria-describedby="helpId"
-                placeholder="--/--/--"
+                placeholder="Password"
               />
               <small id="helpId" class="form-text" text-muted
                 >Ingresa la fecha</small
@@ -42,28 +42,17 @@
                 class="form-control"
                 name="precio"
                 id="precio"
-                v-model="factura.rfc"
+                v-model="datos.rfc"
                 aria-describedby="helpId"
-                placeholder="RFC"
+                placeholder="00/00/00"
               />
               <small id="helpId" class="form-text" text-muted
-                >Ingresa el RFC correspondiente</small
+                >Ingresa el RFC</small
               >
             </div>
-            <label for="fkCliente">Seleccionar un Fk Cleinte:</label>
-             <select id="fkCliente" v-model="datos.fkCliente" class="form-control">
-               <option v-for="cliente in clientes" :key="cliente.id" :value="cliente.id">
-                 {{cliente.nombre}}
-               </option>
-              </select>
             <br />
   
-            <div class="btn-group" role="group">
-              |<button type="submit" class="btn btn-success">Agregar</button>|
-              |<router-link :to="{ name: 'listar' }" class="btn btn-danger"
-                >Cancelar</router-link
-              >|
-            </div>
+            <button type="submit" class="btn btn-primary">Guardar cambios</button>
           </form>
         </div>
       </div>
@@ -71,19 +60,32 @@
   </template>
   
   <script>
-  import axios from "axios";
+  import axios from 'axios';
+  
   export default {
     data() {
       return {
-        factura: {},
+        id: null,
         datos: {
-          fkCliente: null
+          razonSocial: '',
+          fecha: '',
+          rfc: '',
+          cliente: ''
         },
         clientes: []
-      };
+      }
     },
     mounted() {
-      axios.get("https://localhost:7204/Cliente")
+      this.id = this.$route.params.id;
+      axios.get("https://localhost:7204/Factura/ByID/" + this.id)
+        .then(response => {
+          this.datos = response.data.result;
+        })
+        .catch(error => {
+          console.error(error);
+        });
+  
+      axios.get("https://localhost:7204/Factura")
         .then(response => {
           this.clientes = response.data.result;
         })
@@ -92,25 +94,18 @@
         });
     },
     methods: {
-      agregarRegistro() {
-        console.log(this.factura.data);
-  
-        var datosEnviar = {
-          RazonSocial: this.factura.razonSocial,
-          Fecha: this.factura.fecha,
-          RFC: this.factura.rfc,
-          FkCliente: this.factura.fkCliente
-        };
-  
-        axios
-          .post("https://localhost:7204/Factura/Crear", datosEnviar)
-          .then((result) => {
-            console.log(result);
-            window.location.href = "listarf";
+      submitForm() {
+        axios.put("https://localhost:7204/Factura/Editar/" + this.id, this.datos)
+          .then(response => {
+            console.log('Registro actualizado:', response.data.result);
+            this.$router.push('/listarf')
+          })
+          .catch(error => {
+            console.error(error);
           });
-      },
-    },
-  };
+      }
+    }
+  }
   </script>
 
 <style scoped>

@@ -37,13 +37,7 @@
                   Eliminar</button
                 >|
 
-                |<button
-                  type="button"
-                  v-on:click="Editar(empleado.pkEmpleado)"
-                  class="btn btn-warning"
-                >
-                  Editar</button
-                >
+                <RouterLink :to="{path:'/Editare/'+empleado.pkEmpleado}" class="btn btn-warning">Editar</RouterLink>
               </div>
               </td>
             </tr>
