@@ -50,6 +50,26 @@
                 >Ingresa la fecha de hoy</small
               >
             </div>
+
+            {{ datos }}
+
+            <label for="fkCliente">Seleccionar un Fk Rol:</label>
+              <select id="fkCliente" v-model="datos.fkRol" class="form-control">
+                <option v-for="rol in roles" :key="rol.pkRol" :value="rol.pkRol">
+                  {{rol.nombre}}
+                </option>
+              </select>
+              <span>Seleccionado: {{ 'fk ' + datos.fkRol }}</span>
+
+              <label for="fkCliente">Seleccionar un Fk Empleado:</label>
+              <select id="fkCliente" v-model="datos.fkEmpleado" class="form-control">
+                <option v-for="empleado in empleados" :key="empleado.pkEmpleado" :value="empleado.pkEmpleado">
+                  {{empleado.nombre}}
+                </option>
+              </select>
+              <span>Seleccionado: {{ 'fk ' + datos.fkEmpleado }}</span>
+            <br />
+
             <br />
   
             <button type="submit" class="btn btn-primary">Guardar cambios</button>
@@ -69,7 +89,9 @@
         datos: {
           user: '',
           password: '',
-          fechaRegistro: ''
+          fechaRegistro: '',
+          fkRol: '',
+          fkEmpleado: ''
         },
         clientes: []
       }
@@ -91,6 +113,22 @@
         .catch(error => {
           console.error(error);
         });
+
+        axios.get("https://localhost:7204/Rol")
+        .then(response => {
+          this.roles = response.data.result;
+        })
+        .catch(error => {
+          console.error(error);
+      });
+
+      axios.get("https://localhost:7204/Empleado")
+        .then(response => {
+          this.empleados = response.data.result;
+        })
+        .catch(error => {
+          console.error(error);
+      });
     },
     methods: {
       submitForm() {

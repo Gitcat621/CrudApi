@@ -54,16 +54,15 @@
             {{ usuario }}
             
             <label for="fkCliente">Seleccionar un Fk Rol:</label>
-              <select id="fkCliente" v-model="datos.fkRol" class="form-control">
+              <select id="fkCliente" v-model="usuario.fkRol" class="form-control">
                 <option v-for="rol in roles" :key="rol.pkRol" :value="rol.pkRol">
                   {{rol.nombre}}
                 </option>
               </select>
-              <span>Seleccionado: {{ 'fk ' + datos.fkRol }}</span>
-              <input :value="datos.fkRol">
+              <span>Seleccionado: {{ 'fk ' + usuario.fkRol }}</span>
 
-              <label for="fkCliente">Seleccionar un Fk Empleado:</label>
-              <select id="fkCliente" v-model="datos.fkEmpleado" class="form-control">
+              <label for="">Seleccionar un Fk Empleado:</label>
+              <select id="" v-model="usuario.fkEmpleado" class="form-control">
                 <option v-for="empleado in empleados" :key="empleado.pkEmpleado" :value="empleado.pkEmpleado">
                   {{empleado.nombre}}
                 </option>

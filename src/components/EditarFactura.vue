@@ -2,7 +2,7 @@
     <label id="header"></label><br><br><br>
     <div class="container">
       <div class="card">
-        <div class="card-header">Editar Usuario</div>
+        <div class="card-header">Editar Factura</div>
         <div class="card-body">
           <form @submit.prevent="submitForm">
             <div class="form-group">
@@ -50,6 +50,14 @@
                 >Ingresa el RFC</small
               >
             </div>
+            <label for="fkCliente">Seleccionar un Fk Empleado:</label>
+              <select id="fkCliente" v-model="datos.fkCliente" class="form-control">
+                <option v-for="cliente in clientes" :key="cliente.pkCliente" :value="cliente.pkCliente">
+                  {{cliente.nombre}}
+                </option>
+              </select>
+              <span>Seleccionado: {{ 'fk ' + datos.fkCliente }}</span>
+            <br/><br>
             <br />
   
             <button type="submit" class="btn btn-primary">Guardar cambios</button>
@@ -59,7 +67,7 @@
     </div>
   </template>
   
-  <script>
+<script>
   import axios from 'axios';
   
   export default {
@@ -86,6 +94,14 @@
         });
   
       axios.get("https://localhost:7204/Factura")
+        .then(response => {
+          this.clientes = response.data.result;
+        })
+        .catch(error => {
+          console.error(error);
+        });
+
+        axios.get("https://localhost:7204/Cliente")
         .then(response => {
           this.clientes = response.data.result;
         })

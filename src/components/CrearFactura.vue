@@ -50,13 +50,14 @@
                 >Ingresa el RFC correspondiente</small
               >
             </div>
-            <label for="fkCliente">Seleccionar un Fk Cleinte:</label>
-             <select id="fkCliente" v-model="datos.fkCliente" class="form-control">
-               <option v-for="cliente in clientes" :key="cliente.id" :value="cliente.id">
-                 {{cliente.nombre}}
-               </option>
-              </select>
-            <br />
+            <label for="fkCliente">Seleccionar un Fk Cliente:</label>
+            <select v-model="factura.fkCliente">
+              <option v-for="cliente in clientes" v-bind:value="cliente.pkCliente">
+                {{ cliente.nombre }}
+              </option>
+            </select><br>
+            <span>Seleccionado: {{ factura.fkCliente }}</span>
+            <br/><br><br>
   
             <div class="btn-group" role="group">
               |<button type="submit" class="btn btn-success">Agregar</button>|

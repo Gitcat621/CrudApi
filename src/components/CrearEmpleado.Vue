@@ -64,20 +64,28 @@
             <small id="helpId" class="form-text" text-muted
               >Ingresa la ciudad</small
             >
+
           </div> 
-          <label for="fkCliente">Seleccionar un Fk Puesto:</label>
-              <select id="fkCliente" v-model="datos.fkPuesto" class="form-control">
-                <option v-for="puesto in puestos" :key="puesto.id" :value="puesto.id">
+
+          {{ empleado }}
+            
+            <label for="fkCliente">Seleccionar un Fk puesto:</label>
+              <select id="fkCliente" v-model="empleado.fkPuesto" class="form-control">
+                <option v-for="puesto in puestos" :key="puesto.pkPuesto" :value="puesto.pkPuesto">
                   {{puesto.nombre}}
                 </option>
               </select>
+              <span>Seleccionado: {{ 'fk ' + datos.fkPuesto }}</span>
+
+
           <div class="form-group">
             <label for="fkCliente">Seleccionar un Fk Departamento:</label>
-              <select id="fkCliente" v-model="datos.fkDepartamento" class="form-control">
-                <option v-for="departamento in departamentos" :key="departamento.id" :value="departamento.id">
+              <select id="fkCliente" v-model="empleado.fkDepartamento" class="form-control">
+                <option v-for="departamento in departamentos" :key="departamento.pkDepartamento" :value="departamento.pkDepartamento">
                   {{departamento.nombre}}
                 </option>
               </select>
+              <span>Seleccionado: {{ 'fk ' + datos.fkDepartamento }}</span>
           </div> 
           <br />
 

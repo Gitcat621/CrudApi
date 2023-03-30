@@ -65,6 +65,23 @@
                 >Ingresa su ciudad</small
               >
             </div>
+            <label for="fkCliente">Seleccionar un Fk Empleado:</label>
+              <select id="fkCliente" v-model="datos.fkPuesto" class="form-control">
+                <option v-for="puesto in puestos" :key="puesto.pkPuesto" :value="puesto.pkPuesto">
+                  {{puesto.nombre}}
+                </option>
+              </select>
+              <span>Seleccionado: {{ 'fk ' + datos.fkPuesto }}</span>
+            <br/><br>
+
+            <label for="fkCliente">Seleccionar un Fk Empleado:</label>
+              <select id="fkCliente" v-model="datos.fkDepartamento" class="form-control">
+                <option v-for="departamento in departamentos" :key="departamento.pkDepartamento" :value="departamento.pkDepartamento">
+                  {{departamento.nombre}}
+                </option>
+              </select>
+              <span>Seleccionado: {{ 'fk ' + datos.fkDepartamento }}</span>
+            <br/><br>
             <br />
   
             <button type="submit" class="btn btn-primary">Guardar cambios</button>
@@ -107,6 +124,22 @@
         .catch(error => {
           console.error(error);
         });
+
+        axios.get("https://localhost:7204/Puesto")
+        .then(response => {
+          this.puestos = response.data.result;
+        })
+        .catch(error => {
+          console.error(error);
+      });
+
+      axios.get("https://localhost:7204/Departamento")
+        .then(response => {
+          this.departamentos = response.data.result;
+        })
+        .catch(error => {
+          console.error(error);
+      });
     },
     methods: {
       submitForm() {
