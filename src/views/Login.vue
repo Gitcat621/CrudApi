@@ -1,4 +1,5 @@
 <template>
+    <div id="Todo">
     <div id="contenedor">
         <div id="central">
             <div id="login">
@@ -17,6 +18,7 @@
             </div>
         </div>
     </div>
+</div>
 </template>
 
 <style> 
@@ -40,18 +42,22 @@
         width: 100%;
     }
     
+    /* COLOR INICIAR SESION */
     .titulo {
         font-size: 230%;
         font-weight: bolder;
-        color:#ffffff;
+        color:#000000;
         text-align: center;
         margin-bottom: 20px;
     }
     
+    /* COLOR DEL CUADRO LOGIN */
     #login {
+
         width: 100%;
         padding: 50px 30px;
-        background-color: #000000;
+        /* background: linear-gradient(blue, pink); */
+        background-color: rgb(255, 255, 255);
         
         
         -webkit-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
@@ -104,8 +110,9 @@
         border-radius: 3px 3px 3px 3px;
         -moz-border-radius: 3px 3px 3px 3px;
         -webkit-border-radius: 3px 3px 3px 3px;
-        
-        background-color: rgb(0, 33, 141);
+
+        /* COLOR DEL BOTON */
+        background-color: rgb(250, 32, 195);
         
         margin-top: 10px;
     }
@@ -119,5 +126,14 @@
         height: 80px;
         display: flex;
         justify-content: center;
+    }
+
+    #Todo{
+        background: linear-gradient(pink, blue);
+        margin: 20px;
+    }
+
+    #user, #Password{
+        background-color: rgb(189, 189, 189);
     }
 </Style>

@@ -1,5 +1,9 @@
 <template>
-      <label id="header"></label><br><br><br>
+  <div class="H">
+    <div id="title">
+      <label>USUARIOS</label>
+    </div>
+  </div>
     <div>
       <div class="card">
         <div class="card-header">Usuario</div>
@@ -90,11 +94,16 @@ export default {
 </script>
 
 <style>
-#header{
-  text-align: center;
-  color: white;
-  width: 100%;
-  height: 55px;
-  background-color: #0f0092;
+.H{
+  position: relative;
+  background-color: rgb(255, 134, 154);
+  height: 50PX;
+}
+
+#title{
+  position: absolute;
+  top: 50%;
+  left: 50;
+  font-size: 20px;
 }
 </style>

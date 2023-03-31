@@ -1,5 +1,4 @@
 <template>
-    <label id="header"></label><br><br><br>
   <div>
     <div class="card">
       <div class="card-header">Rol</div>
@@ -79,13 +78,3 @@ methods: {
 },
 };
 </script>
-
-<style>
-#header{
-text-align: center;
-color: white;
-width: 100%;
-height: 55px;
-background-color: #0f0092;
-}
-</style>

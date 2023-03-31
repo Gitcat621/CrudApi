@@ -1,5 +1,5 @@
 <template>
-    <label id="header"></label><br><br><br>
+
   <div>
     <div class="card">
       <div class="card-header">Puesto</div>
